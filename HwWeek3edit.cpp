@@ -4,6 +4,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <cmath>
 #include <string>
@@ -138,6 +139,15 @@ int main()
 		<< setw(BLOCK_FORMAT_2) << "Your total shipping costs are" << "$" << shippingCost + orderTotal << endl << endl;
 
 	cout << setw(BLOCK_FORMAT_2) << setfill('-') << "-" << "Thank You!" << endl << endl;
+
+	ofstream outFile;
+	outFile.open("Order.txt");
+	outFile << setfill('.') << left;
+	outFile << setw(BLOCK_FORMAT_2) << "Your item is" << item << endl
+		<< setw(BLOCK_FORMAT_2) << "Your shipping cost is" << "$" << shippingCost << endl
+		<< setw(BLOCK_FORMAT_2) << "You are shipping to" << dest << endl
+		<< setw(BLOCK_FORMAT_2) << "Your total shipping costs are" << "$" << shippingCost + orderTotal << endl << endl;
+	outFile.close();
 
 	system("pause");
 	return 0;
